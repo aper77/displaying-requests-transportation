@@ -9,16 +9,6 @@ function TransportationRequests({ routes, selected, selectRoute, setRoutes }) {
         setRoutes(tempRoutes);
     }
 
-    // const onAddRoutes = () => {
-    //     const tempRoutes = [...routes];
-    //     tempRoutes.push({
-    //         startLat: 40.16577098614023, startLng: 44.28563057940129, startName: '',
-    //         endLat: 40.127659918618065, endLng: 44.73004047370724, endName: ''
-    //     })
-    //     setRoutes(tempRoutes);
-    // }
-
-
     return (
         <div className="responses">
             <table>
