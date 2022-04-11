@@ -26,21 +26,21 @@ code {
 }
 
 .responses {
-  width: 650px;
-}
-
-.responses {
   background-color: #4285f4;
   color: white;
   float: left;
   resize: horizontal;
   border: 2px solid #fff;
-  padding-left: 2%;
+  height: 95%;
 }
 
-th,
 td {
-  padding: 10px;
+  padding: 5px;
+}
+
+.td-resize {
+  resize: both;
+  overflow: auto;
 }
 
 tr.active {
@@ -48,9 +48,22 @@ tr.active {
   color: black;
 }
 
+tr.default {
+  border: 2px solid #fff;
+}
+
 .map {
   border: 2px solid #fff;
   float: right;
   direction: rtl;
   resize: horizontal;
+}
+
+h6,
+p {
+  color: black;
+}
+
+p {
+  background-color: white;
 }

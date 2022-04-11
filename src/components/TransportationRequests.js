@@ -13,31 +13,36 @@ function TransportationRequests({ routes, selected, selectRoute, setRoutes }) {
         <div className="responses">
             <table>
                 <tr>
-                    <th>From Address</th>
-                    <th>To Address</th>
+                    <th><h6>Loading Address</h6></th>
+                    <th><h6>Unloading Address </h6></th>
                 </tr>
                 <tbody>
                     {routes.map((item, index) => {
                         const isActive = selected === index;
                         return (
-                            <tr onClick={() => selectRoute(index)} key={index} className={isActive ? 'active' : ''}>
+                            <tr onClick={() => selectRoute(index)} key={index} className={isActive ? 'active' : 'default'}>
+
                                 <td>
-                                    startLat:  <input type="text" name='startLat' value={item.startLat} onChange={(e) => onChangeName(index, e)}></input>
-                                    endLat: <input type="text" name='endLat' value={item.endLat} onChange={(e) => onChangeName(index, e)}></input>
+                                    <input type="text" name='loadingAddressName' value={item.loadingAddressName} onChange={(e) => onChangeName(index, e)}></input>
+                                    <td>
+                                        Loading Address Lat:  <input type="text" name='loadingAddressLat' value={item.loadingAddressLat} onChange={(e) => onChangeName(index, e)}></input>
+                                        Unloading Address Lat: <input type="text" name='unloadingAddressLat' value={item.unloadingAddressLat} onChange={(e) => onChangeName(index, e)}></input>
+                                    </td>
                                 </td>
-                                <td>
-                                    startLng:  <input type="text" name='startLng' value={item.startLng} onChange={(e) => onChangeName(index, e)}></input>
-                                    endLng   <input type="text" name='endLng' value={item.endLng} onChange={(e) => onChangeName(index, e)}></input>
-                                </td>
-                                <td>
-                                    start: <input type="text" name='startName' value={item.startName} onChange={(e) => onChangeName(index, e)}></input>
-                                    end:  <input type="text" name='endName' value={item.endName} onChange={(e) => onChangeName(index, e)}></input>
+                                <td className="td-resize">
+                                    <input type="text" name='unloadingAddressName' value={item.unloadingAddressName} onChange={(e) => onChangeName(index, e)}></input>
+                                    <td>
+                                        Loading Address Lng:  <input type="text" name='loadingAddressLng' value={item.loadingAddressLng} onChange={(e) => onChangeName(index, e)}></input>
+                                        Unloading Address Lng:   <input type="text" name='unloadingAddressLng' value={item.unloadingAddressLng} onChange={(e) => onChangeName(index, e)}></input>
+                                    </td>
                                 </td>
                             </tr>
                         )
                     })}
                 </tbody>
             </table>
+            <p>If you want  to change loading  place address you can changing loading addres lat,loading address lng the same way with unloading.
+                I do not finde free google map Geocoder api,for seraching with address in place of lat,lng.Thanks</p>
         </div >
     )
 }

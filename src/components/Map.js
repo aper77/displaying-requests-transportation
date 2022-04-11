@@ -26,27 +26,26 @@ function Map({ activeRoute }) {
 
     const initData = () => {
         const center = activeRoute === undefined ? { lat: 40.189047526231334, lng: 44.504357760617864 }
-            : { lat: parseFloat(activeRoute.startLat), lng: parseFloat(activeRoute.endLng) };
+            : { lat: parseFloat(activeRoute.loadingAddressLat), lng: parseFloat(activeRoute.unloadingAddressLng) };
         const options = { zoom: 9, scaleControl: true, center: center };
         mapLoader
             .load()
             .then(async (google) => {
                 const map = new google.maps.Map(mapRef.current, options);
-                let firstAddress = { lat: parseFloat(activeRoute.startLat), lng: parseFloat(activeRoute.startLng) };
-                let secondAddress = { lat: parseFloat(activeRoute.endLat), lng: parseFloat(activeRoute.endLng) };
-                console.log(typeof activeRoute.startLat + 'start')
+                let loadingAddress = { lat: parseFloat(activeRoute.loadingAddressLat), lng: parseFloat(activeRoute.loadingAddressLng) };
+                let unloadingAddress = { lat: parseFloat(activeRoute.unloadingAddressLat), lng: parseFloat(activeRoute.unloadingAddressLng) };
 
 
                 //It is for function getLocation but i can not found free api for Geocoder
 
 
-                // console.log(initialData.startLat + "second")
+                // console.log(activeRoutr.loadingAddressLat + "second")
                 // const locationWithAddress = await getLocation(activeRoute.startName);
                 // console.log(locationWithAddress);
 
-                new google.maps.Marker({ position: firstAddress, map: map });
-                new google.maps.Marker({ position: secondAddress, map: map });
-                new google.maps.Polyline({ path: [firstAddress, secondAddress], map: map });
+                new google.maps.Marker({ position: loadingAddress, map: map });
+                new google.maps.Marker({ position: unloadingAddress, map: map });
+                new google.maps.Polyline({ path: [loadingAddress, unloadingAddress], map: map });
             })
             .catch(e => {
                 console.log(e);
